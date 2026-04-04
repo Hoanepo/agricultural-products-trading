@@ -28,9 +28,11 @@ const StatCard = ({ icon: Icon, label, value, color, bg }: any) => (
 export default function WarehouseMap({
   mapData,
   statsData,
+  inventoryData,
 }: {
   mapData?: any[];
   statsData?: any;
+  inventoryData?: any[];
 }) {
   const displayZones = mapData || [];
 
@@ -156,6 +158,66 @@ export default function WarehouseMap({
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* KHU VỰC 3: CHI TIẾT TỒN KHO THỰC TẾ (CODE MỚI THÊM VÀO) */}
+      <div className="bg-[#FFFFFF] p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-[#2C2C2A]">
+              <Package className="text-[#378ADD]" /> Danh sách tồn kho chi tiết
+            </h2>
+            <p className="text-sm text-[#888780] mt-1">
+              Chi tiết số lượng, vị trí và hạn sử dụng của từng lô hàng
+            </p>
+          </div>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Tìm kiếm mã lô, sản phẩm..."
+              className="pl-4 pr-10 py-2 border border-gray-200 rounded-lg text-sm focus:border-[#1D9E75] outline-none w-64"
+            />
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="bg-gray-50 text-[#888780] font-medium border-b border-gray-200">
+                <th className="p-3 rounded-tl-lg">Sản phẩm</th>
+                <th className="p-3">Mã Lô</th>
+                <th className="p-3 text-right">Tồn kho (Thùng)</th>
+                <th className="p-3">Vị trí thực tế</th>
+                <th className="p-3 rounded-tr-lg">Hạn sử dụng</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {inventoryData && inventoryData.length > 0 ? (
+                inventoryData.map((item, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                    <td className="p-3 font-medium text-[#2C2C2A]">
+                      {item.san_pham}
+                    </td>
+                    <td className="p-3 text-[#378ADD] font-mono">
+                      {item.ma_lo}
+                    </td>
+                    <td className="p-3 text-right font-bold text-[#1D9E75]">
+                      {item.so_luong}
+                    </td>
+                    <td className="p-3 text-gray-600">{item.vi_tri}</td>
+                    <td className="p-3 text-gray-600">{item.han_su_dung}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5} className="p-8 text-center text-gray-400">
+                    Không có hàng trong kho
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

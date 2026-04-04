@@ -97,6 +97,31 @@ export default async function WarehousePage() {
   const mapData = Array.from(khuVucMap.values());
 
   // ==========================================
+  // 5.5. LẤY CHI TIẾT TỒN KHO TỪNG MẶT HÀNG
+  // ==========================================
+  const rawInventory = await prisma.ton_kho_tong.findMany({
+    where: { so_luong: { gt: 0 } }, // Chỉ lấy lô nào còn hàng
+    include: {
+      lo_hang: { include: { bien_the_san_pham: true } },
+      vi_tri_kho: true,
+    },
+    orderBy: { ngay_cap_nhat: "desc" },
+  });
+
+  const inventoryData = rawInventory.map((item) => ({
+    id: item.id,
+    san_pham:
+      item.lo_hang?.bien_the_san_pham?.ten_bien_the ||
+      "Sản phẩm không xác định",
+    ma_lo: item.lo_hang?.ma_lo_hang || "N/A",
+    so_luong: item.so_luong,
+    vi_tri: `${item.vi_tri_kho?.khu_vuc} - Dãy ${item.vi_tri_kho?.day} - Kệ ${item.vi_tri_kho?.ke}`,
+    han_su_dung: item.lo_hang?.han_su_dung
+      ? item.lo_hang.han_su_dung.toLocaleDateString("vi-VN")
+      : "N/A",
+  }));
+
+  // ==========================================
   // 6. TRUYỀN DATA XUỐNG GIAO DIỆN CLIENT
   // ==========================================
   return (
@@ -106,6 +131,7 @@ export default async function WarehousePage() {
       statsData={statsData}
       formOptions={formOptions}
       historyData={historyData}
+      inventoryData={inventoryData} // BƠM THÊM CÁI NÀY XUỐNG
     />
   );
 }

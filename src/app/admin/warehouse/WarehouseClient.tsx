@@ -23,6 +23,7 @@ export default function WarehouseClient({
   statsData,
   formOptions,
   historyData,
+  inventoryData,
 }: any) {
   const [activeTab, setActiveTab] = useState("map");
 
@@ -79,7 +80,11 @@ export default function WarehouseClient({
       {/* Tab Content (Khu vực hiển thị) */}
       <div className="animate-in fade-in duration-300">
         <div className={activeTab === "map" ? "block" : "hidden"}>
-          <WarehouseMap mapData={mapData} statsData={statsData} />
+          <WarehouseMap
+            mapData={mapData}
+            statsData={statsData}
+            inventoryData={inventoryData}
+          />
         </div>
         <div className={activeTab === "import" ? "block" : "hidden"}>
           <GoodsReceipt formOptions={formOptions} />
