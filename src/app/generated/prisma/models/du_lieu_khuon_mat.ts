@@ -182,7 +182,7 @@ export type Du_lieu_khuon_matGroupByOutputType = {
   _max: Du_lieu_khuon_matMaxAggregateOutputType | null
 }
 
-export type GetDu_lieu_khuon_matGroupByPayload<T extends du_lieu_khuon_matGroupByArgs> = Prisma.PrismaPromise<
+type GetDu_lieu_khuon_matGroupByPayload<T extends du_lieu_khuon_matGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Du_lieu_khuon_matGroupByOutputType, T['by']> &
       {

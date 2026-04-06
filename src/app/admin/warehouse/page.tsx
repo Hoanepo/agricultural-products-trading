@@ -70,7 +70,31 @@ export default async function WarehousePage() {
       : "Bán lẻ / Khác",
     nguoi_xuat: item.nguoi_xuat_id ? `NV-${item.nguoi_xuat_id}` : "Admin",
   }));
+  // ==========================================
+  // 4.5 LẤY DỮ LIỆU LỊCH SỬ NHẬP KHO
+  // ==========================================
+  const rawImportHistory = await prisma.phieu_nhap_kho.findMany({
+    orderBy: { ngay_tao: "desc" },
+    take: 50,
+    include: {
+      nha_cung_cap: true,
+      chi_tiet: { include: { bien_the_san_pham: true } },
+    },
+  });
 
+  const importHistoryData = rawImportHistory.map((p) => ({
+    id: p.id,
+    ma_phieu: p.ma_phieu || `PN-${p.id}`,
+    ngay_nhap: p.ngay_tao ? p.ngay_tao.toLocaleString("vi-VN") : "N/A",
+    ncc: p.nha_cung_cap?.ten_ncc || "N/A",
+    san_pham:
+      p.chi_tiet?.[0]?.bien_the_san_pham?.ten_bien_the || "Nhiều sản phẩm",
+    so_luong:
+      p.chi_tiet?.[0]?.so_luong_yeu_cau || p.chi_tiet?.[0]?.so_luong_thung || 0,
+    trang_thai: p.trang_thai,
+  }));
+
+  // ==========================================
   // ==========================================
   // 5. TÍNH TOÁN SƠ ĐỒ KHO (Bản đồ sức chứa)
   // ==========================================
@@ -131,7 +155,8 @@ export default async function WarehousePage() {
       statsData={statsData}
       formOptions={formOptions}
       historyData={historyData}
-      inventoryData={inventoryData} // BƠM THÊM CÁI NÀY XUỐNG
+      inventoryData={inventoryData}
+      importHistoryData={importHistoryData}
     />
   );
 }

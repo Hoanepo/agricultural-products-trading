@@ -171,7 +171,7 @@ export type Phuong_thuc_thanh_toanGroupByOutputType = {
   _max: Phuong_thuc_thanh_toanMaxAggregateOutputType | null
 }
 
-export type GetPhuong_thuc_thanh_toanGroupByPayload<T extends phuong_thuc_thanh_toanGroupByArgs> = Prisma.PrismaPromise<
+type GetPhuong_thuc_thanh_toanGroupByPayload<T extends phuong_thuc_thanh_toanGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Phuong_thuc_thanh_toanGroupByOutputType, T['by']> &
       {

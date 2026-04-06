@@ -214,7 +214,7 @@ export type Nhiem_vu_cong_viecGroupByOutputType = {
   _max: Nhiem_vu_cong_viecMaxAggregateOutputType | null
 }
 
-export type GetNhiem_vu_cong_viecGroupByPayload<T extends nhiem_vu_cong_viecGroupByArgs> = Prisma.PrismaPromise<
+type GetNhiem_vu_cong_viecGroupByPayload<T extends nhiem_vu_cong_viecGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Nhiem_vu_cong_viecGroupByOutputType, T['by']> &
       {

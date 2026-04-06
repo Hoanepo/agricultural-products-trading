@@ -182,7 +182,7 @@ export type Anh_danh_giaGroupByOutputType = {
   _max: Anh_danh_giaMaxAggregateOutputType | null
 }
 
-export type GetAnh_danh_giaGroupByPayload<T extends anh_danh_giaGroupByArgs> = Prisma.PrismaPromise<
+type GetAnh_danh_giaGroupByPayload<T extends anh_danh_giaGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Anh_danh_giaGroupByOutputType, T['by']> &
       {

@@ -178,7 +178,7 @@ export type Phan_he_he_thongGroupByOutputType = {
   _max: Phan_he_he_thongMaxAggregateOutputType | null
 }
 
-export type GetPhan_he_he_thongGroupByPayload<T extends phan_he_he_thongGroupByArgs> = Prisma.PrismaPromise<
+type GetPhan_he_he_thongGroupByPayload<T extends phan_he_he_thongGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Phan_he_he_thongGroupByOutputType, T['by']> &
       {

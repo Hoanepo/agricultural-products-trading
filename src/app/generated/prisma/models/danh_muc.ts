@@ -182,7 +182,7 @@ export type Danh_mucGroupByOutputType = {
   _max: Danh_mucMaxAggregateOutputType | null
 }
 
-export type GetDanh_mucGroupByPayload<T extends danh_mucGroupByArgs> = Prisma.PrismaPromise<
+type GetDanh_mucGroupByPayload<T extends danh_mucGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Danh_mucGroupByOutputType, T['by']> &
       {

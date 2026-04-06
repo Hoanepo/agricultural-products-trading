@@ -24,6 +24,7 @@ export default function WarehouseClient({
   formOptions,
   historyData,
   inventoryData,
+  importHistoryData,
 }: any) {
   const [activeTab, setActiveTab] = useState("map");
 
@@ -73,7 +74,7 @@ export default function WarehouseClient({
           onClick={() => setActiveTab("history")}
           className={`flex-1 min-w-[150px] py-3 px-4 flex items-center justify-center gap-2 font-medium text-sm transition-colors border-b-2 ${activeTab === "history" ? "border-[#1D9E75] text-[#1D9E75]" : "border-transparent text-[#888780] hover:text-[#2C2C2A] hover:bg-gray-50"}`}
         >
-          <Clock size={18} /> Lịch sử xuất
+          <Clock size={18} /> Lịch sử
         </button>
       </div>
 
@@ -97,7 +98,10 @@ export default function WarehouseClient({
         </div>
         {/* Component Lịch sử xuất kho */}
         <div className={activeTab === "history" ? "block" : "hidden"}>
-          <IssueHistory historyData={historyData} />
+          <IssueHistory
+            historyData={historyData}
+            importHistoryData={importHistoryData}
+          />{" "}
         </div>
       </div>
     </div>

@@ -204,7 +204,7 @@ export type Ton_kho_tongGroupByOutputType = {
   _max: Ton_kho_tongMaxAggregateOutputType | null
 }
 
-export type GetTon_kho_tongGroupByPayload<T extends ton_kho_tongGroupByArgs> = Prisma.PrismaPromise<
+type GetTon_kho_tongGroupByPayload<T extends ton_kho_tongGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Ton_kho_tongGroupByOutputType, T['by']> &
       {

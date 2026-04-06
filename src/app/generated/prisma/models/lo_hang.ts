@@ -225,7 +225,7 @@ export type Lo_hangGroupByOutputType = {
   _max: Lo_hangMaxAggregateOutputType | null
 }
 
-export type GetLo_hangGroupByPayload<T extends lo_hangGroupByArgs> = Prisma.PrismaPromise<
+type GetLo_hangGroupByPayload<T extends lo_hangGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Lo_hangGroupByOutputType, T['by']> &
       {

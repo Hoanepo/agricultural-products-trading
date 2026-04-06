@@ -222,7 +222,7 @@ export type Don_hangGroupByOutputType = {
   _max: Don_hangMaxAggregateOutputType | null
 }
 
-export type GetDon_hangGroupByPayload<T extends don_hangGroupByArgs> = Prisma.PrismaPromise<
+type GetDon_hangGroupByPayload<T extends don_hangGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Don_hangGroupByOutputType, T['by']> &
       {

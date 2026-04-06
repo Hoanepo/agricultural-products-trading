@@ -178,7 +178,7 @@ export type Kho_hangGroupByOutputType = {
   _max: Kho_hangMaxAggregateOutputType | null
 }
 
-export type GetKho_hangGroupByPayload<T extends kho_hangGroupByArgs> = Prisma.PrismaPromise<
+type GetKho_hangGroupByPayload<T extends kho_hangGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Kho_hangGroupByOutputType, T['by']> &
       {

@@ -185,7 +185,7 @@ export type Ca_lam_viecGroupByOutputType = {
   _max: Ca_lam_viecMaxAggregateOutputType | null
 }
 
-export type GetCa_lam_viecGroupByPayload<T extends ca_lam_viecGroupByArgs> = Prisma.PrismaPromise<
+type GetCa_lam_viecGroupByPayload<T extends ca_lam_viecGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Ca_lam_viecGroupByOutputType, T['by']> &
       {

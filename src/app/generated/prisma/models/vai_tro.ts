@@ -178,7 +178,7 @@ export type Vai_troGroupByOutputType = {
   _max: Vai_troMaxAggregateOutputType | null
 }
 
-export type GetVai_troGroupByPayload<T extends vai_troGroupByArgs> = Prisma.PrismaPromise<
+type GetVai_troGroupByPayload<T extends vai_troGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Vai_troGroupByOutputType, T['by']> &
       {

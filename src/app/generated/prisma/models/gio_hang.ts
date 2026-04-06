@@ -186,7 +186,7 @@ export type Gio_hangGroupByOutputType = {
   _max: Gio_hangMaxAggregateOutputType | null
 }
 
-export type GetGio_hangGroupByPayload<T extends gio_hangGroupByArgs> = Prisma.PrismaPromise<
+type GetGio_hangGroupByPayload<T extends gio_hangGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Gio_hangGroupByOutputType, T['by']> &
       {
